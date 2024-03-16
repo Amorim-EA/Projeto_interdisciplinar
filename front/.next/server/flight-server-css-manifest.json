@@ -1,0 +1,18 @@
+{
+  "cssImports": {
+    "/data/data/com.termux/files/home/Projeto_Interdisciplinar/front/src/app/layout.js": [
+      "/data/data/com.termux/files/home/Projeto_Interdisciplinar/front/src/app/page.module.css"
+    ]
+  },
+  "cssModules": {
+    "/data/data/com.termux/files/home/Projeto_Interdisciplinar/front/src/app/page": [
+      "/data/data/com.termux/files/home/Projeto_Interdisciplinar/front/src/app/page.module.css"
+    ],
+    "/data/data/com.termux/files/home/Projeto_Interdisciplinar/front/src/app/produto/[id]/page": [
+      "/data/data/com.termux/files/home/Projeto_Interdisciplinar/front/src/app/page.module.css"
+    ],
+    "/data/data/com.termux/files/home/Projeto_Interdisciplinar/front/src/app/cadastro/page": [
+      "/data/data/com.termux/files/home/Projeto_Interdisciplinar/front/src/app/page.module.css"
+    ]
+  }
+}

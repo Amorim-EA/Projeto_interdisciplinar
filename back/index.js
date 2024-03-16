@@ -1,10 +1,12 @@
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
 const Produto = require("./models/produto");
 
 const app = express();
 
-// view engine setup
+app.use(cors())
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -22,7 +24,7 @@ app.get('/produtos', async function(req, res){
   }
 });
 
-app.get('/produtos', async function(req, res){
+app.get('/produto', async function(req, res){
   try {
     var produto = await Produto.selectOne(req.query.id);
     res.json(produto.rows[0]);
@@ -33,7 +35,7 @@ app.get('/produtos', async function(req, res){
 });
 
 
-app.post('/produtos', async function(req, res){
+app.post('/produto', async function(req, res){
   try {
     var produto = await Produto.insert(req.body);
     res.json(produto.rows);
@@ -43,7 +45,7 @@ app.post('/produtos', async function(req, res){
   }
 });
 
-app.put('/produtos', async function(req, res){
+app.put('/produto', async function(req, res){
   try {
     var produto = await Produto.update(req.body.id, req.body);
     res.json(produto.rows);
@@ -53,7 +55,7 @@ app.put('/produtos', async function(req, res){
   }
 });
 
-app.delete('/produtos', async function(req, res){
+app.delete('/produto', async function(req, res){
   try {
     var produto = await Produto.delete(req.body.id);
     res.json(produto.rows);
@@ -63,6 +65,6 @@ app.delete('/produtos', async function(req, res){
   }
 });
 
-app.listen(3003, function() {
-  console.log('App de Exemplo escutando na porta 3004!')
+app.listen(3000, function() {
+  console.log('App de Exemplo escutando na porta 3000!')
 });

@@ -1,34 +1,38 @@
-"use client"
-
-import style from './page.module.css'
+'use client'
+import style from './page.module.css';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+export default function Home() {
+  const [produtos, setProdutos] = useState([]);
 
-export default async function Home() {
-  const req = await fetch("https://projeto-interdisciplinar-seven.vercel.app/produtos/", {
-    cache: "no-cache",
-  });
-
-  const produtos = await req.json();
+  useEffect(() => {
+    async function fetchProdutos() {
+      try {
+        const response = await fetch("http://192.168.15.73:3000/produtos", {
+          cache: "no-cache",
+        });
+        const produtosData = await response.json();
+        setProdutos(produtosData);
+      } catch (error) {
+        console.error("Erro ao buscar produtos:", error);
+      }
+    }
+    fetchProdutos();
+  }, []);
 
   return (
-   <div className={style.containerP}>
-
-        {produtos.map(item => (
-
-          <div className={style.card} key={item.id}>
-
-            <img src={`${item.imagem}`} className={style.imgC}/>
-            <p className={style.tituloC}>{item.titulo}</p>
-            <p className={style.dataC}>{item.data_cadastro}</p>
-            <p className={style.precoC}>{item.preco}</p>
-
-            <div className={style.botoes}>
-              <Link href={`produto/${item.id}`} className={style.linkV}>ver mais</Link>
-            </div>
-
+    <div className={style.containerP}>
+      {produtos.map(item => (
+        <div className={style.card} key={item.id}>
+          <img src={`${item.imagem}`} className={style.imgC} alt={item.titulo} />
+          <p className={style.tituloC}>{item.titulo}</p>
+          <p className={style.dataC}>{item.data_cadastro}</p>
+          <p className={style.precoC}>{item.preco}</p>
+          <div className={style.botoes}>
+            <Link href={`/produto/${item.id}`} className={style.linkV}>ver mais</Link>
           </div>
-        ))}
-
-      </div>
-  )
+        </div>
+      ))}
+    </div>
+  );
 }

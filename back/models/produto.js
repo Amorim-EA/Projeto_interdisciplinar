@@ -15,9 +15,9 @@ class Produto {
     try {
       const connect = await db.connect();
       const sql = "SELECT * FROM produto WHERE id=$1";
-      return await connect.query(sql,[id]);
+      return await connect.query(sql, [id]);
     } catch (error) {
-      console.error('Erro em select:', error);
+      console.error('Erro em selectOne:', error); 
       throw error;
     }
   }
@@ -38,8 +38,8 @@ class Produto {
   static async update(id, data) {
     try {
       const connect = await db.connect();
-      const sql = 'UPDATE produto SET titulo=$1, data_cadastro=$2, preco=$3 imagem=$4 descricao=$5 WHERE id=$6 RETURNING id, titulo, data_cadastro, preco, imagem, descricao;';
-      const values = [data.titulo, data.data_cadastro, data.preco, data.imagem, data.descricao];
+      const sql = 'UPDATE produto SET titulo=$1, data_cadastro=$2, preco=$3, imagem=$4, descricao=$5 WHERE id=$6 RETURNING id, titulo, data_cadastro, preco, imagem, descricao;';
+      const values = [data.titulo, data.data_cadastro, data.preco, data.imagem, data.descricao, id];
       return await connect.query(sql, values);
     } catch (error) {
       console.error('Erro em update:', error);
@@ -50,7 +50,7 @@ class Produto {
   static async delete(id) {
     try {
       const connect = await db.connect();
-      const sql = 'DELETE FROM produto WHERE id=$1 RETURNING id, titulo, data_cadastro, preco, imagem, descricao;;';
+      const sql = 'DELETE FROM produto WHERE id=$1 RETURNING id, titulo, data_cadastro, preco, imagem, descricao;'; 
       return await connect.query(sql, [id]);
     } catch (error) {
       console.error('Erro em delete:', error);

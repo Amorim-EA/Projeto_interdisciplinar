@@ -11,19 +11,19 @@ export default function RootLayout({ children }) {
     <html lang="en">
       
       <body className={style.main}>
-      <div className={style.header}>
-      <h1 className={style.h1}>Produtos</h1>
-
-      <div className={style.navbar}>
-        <Link className={style.links} href="/cadastro">cadastrar</Link>
-      </div>
-      
-    </div>
+          <div className={style.header}>
+          <h1 className={style.h1}>Produtos</h1>
+    
+          <div className={style.navbar}>
+            <Link className={style.links} href="/cadastro">cadastrar</Link>
+          </div>
+          
+          </div>
 
       {children}
 
       <div className={style.footer}>
-        <p>copzright: eder da silva amorim e erick da silva amorim</p>
+        <p>coded by: eder amorim e erick amorim</p>
       </div>
       </body>
 

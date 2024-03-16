@@ -13,5 +13,11 @@ Projeto interdisciplinar entre as disciplinas
 
 # Arquivos Rodando
 
-- back: https://projeto-interdisciplinar-seven.vercel.app/produtos
-- front: 
+- back: https://projeto-interdisciplinar-nine.vercel.app/
+- front: https://front-aplication-projeto.vercel.app/
+
+### EndPoints do Backend:
+- GET /produto/?id=id  query: id=1
+- GET /produtoss
+- POST /produto  body: id
+- DELETE /produto  body: id

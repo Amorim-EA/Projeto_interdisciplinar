@@ -15,21 +15,26 @@ export default function Cadastro() {
 
     const cadastrar = (e) => {
         e.preventDefault()
-        const produto = {
-            titulo: titulo,
-            data_cadastro: data_cadastro,
-            preco: preco,
-            imagem: imagem,
-            descricao: descricao,
+        try {
+            const produto = {
+                titulo: titulo,
+                data_cadastro: data_cadastro,
+                preco: preco,
+                imagem: imagem,
+                descricao: descricao,
+            }
+    
+            const produtoJson = JSON.stringify(produto);
+    
+            fetch("https://projeto-interdisciplinar-nine.vercel.app/produto", {
+                method: "POST",
+                headers: { "Content-Type": "Application/json" },
+                body: produtoJson
+            })
+            route.push("/")
+        } catch {
+          console.error("Não foi possivel cadastrar!")
         }
-
-        const produtoJson = JSON.stringify(produto);
-
-        fetch("http://localhost:3000/produto", {
-            method: "POST",
-            headers: { "content-Type": "application/json" },
-            body: produtoJson
-        }).then(function(){ route.push("/")}).catch(()=> console.log("Não foi possível cadastrar!"))
     }
     return (
             <div className={style.containerC}>

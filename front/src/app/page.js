@@ -8,7 +8,7 @@ export default function Home() {
   useEffect(() => {
     async function fetchProdutos() {
       try {
-        const response = await fetch("http://192.168.15.73:3000/produtos", {
+        const response = await fetch("https://projeto-interdisciplinar-nine.vercel.app/produtos", {
           cache: "no-cache",
         });
         const produtosData = await response.json();

@@ -19,7 +19,7 @@ export default function VerMais({ params }) {
   useEffect(() => {
     const fetchProduto = async () => {
       try {
-        const response = await fetch(`http://192.168.15.73:3000/produto?id=${id}`);
+        const response = await fetch(`https://projeto-interdisciplinar-nine.vercel.app/produto?id=${id}`);
         const produtoData = await response.json();
         setProduto(produtoData);
       } catch (error) {
@@ -31,7 +31,7 @@ export default function VerMais({ params }) {
 
   const remover = () => {
     try {
-      fetch("http://192.168.15.73:3000/produto", {
+      fetch("https://projeto-interdisciplinar-nine.vercel.app/produto", {
         method: "DELETE",
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ id }) 
